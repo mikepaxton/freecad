@@ -1,0 +1,18 @@
+services:
+  freecad:
+    image: lscr.io/linuxserver/freecad:latest
+    network_mode: bridge
+    container_name: freecad
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=America/Los_Angeles
+      - TITLE="FreeCad"
+    volumes:
+      - /home/admin/Documents/freecad:/config
+    ports:
+      - 8150:3000
+      - 8151:3001
+    restart: unless-stopped
